@@ -6,6 +6,7 @@
 #define EMPATHETIC_SOLDERING_HEATTRACKER_H
 
 #include <Adafruit_AMG88xx.h>
+#include <util/EasingValue.h>
 
 class HeatTracker {
 
@@ -17,7 +18,16 @@ private:
     float x = 0.0f;
     float y = 0.0f;
 
+    bool easingEnabled;
+
+    EasingValue easingX = EasingValue(0.5f, 0.1f);
+    EasingValue easingY = EasingValue(0.5f, 0.1f);
+
+    void updateEasing();
+
 public:
+    explicit HeatTracker(bool easingEnabled = false);
+
     void setup();
 
     void update();
@@ -39,6 +49,12 @@ public:
      * @return y value between 0.0 and 1.0
      */
     float getY() const;
+
+    void setEasing(float value);
+
+    bool isEasingEnabled() const;
+
+    void setEasingEnabled(bool easingEnabled);
 };
 
 

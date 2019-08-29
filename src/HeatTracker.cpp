@@ -33,6 +33,9 @@ void HeatTracker::update() {
     // normalize values
     x = maxX / 8.0f;
     y = maxY / 8.0f;
+
+    if(easingEnabled)
+        updateEasing();
 }
 
 float HeatTracker::getX() const {
@@ -45,4 +48,32 @@ float HeatTracker::getY() const {
 
 float HeatTracker::getTemperature() const {
     return temperature;
+}
+
+HeatTracker::HeatTracker(bool easingEnabled) {
+    this->easingEnabled = easingEnabled;
+}
+
+void HeatTracker::updateEasing() {
+    easingX.setTarget(x);
+    easingY.setTarget(y);
+
+    easingX.update();
+    easingY.update();
+
+    x = easingX.get();
+    y = easingY.get();
+}
+
+bool HeatTracker::isEasingEnabled() const {
+    return easingEnabled;
+}
+
+void HeatTracker::setEasingEnabled(bool easingEnabled) {
+    HeatTracker::easingEnabled = easingEnabled;
+}
+
+void HeatTracker::setEasing(float value) {
+    easingX.setEasing(value);
+    easingY.setEasing(value);
 }

@@ -5,11 +5,12 @@
 #include "Arduino.h"
 #include "HeatTracker.h"
 
-HeatTracker tracker;
+auto tracker = HeatTracker(true);
 
 void setup() {
     Serial.begin(9600);
 
+    tracker.setEasing(0.2);
     tracker.setup();
 }
 
@@ -22,7 +23,5 @@ void loop() {
     Serial.print(tracker.getY());
     Serial.print(" Temp: ");
     Serial.println(tracker.getTemperature());
-
-    Serial.println("------------");
-    delay(3000);
+    delay(100);
 }
