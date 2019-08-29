@@ -18,8 +18,11 @@ void loop() {
 
     Serial.print("X: ");
     Serial.print(tracker.getX());
-    Serial.print("Y: ");
+    Serial.print(" Y: ");
     Serial.print(tracker.getY());
+    Serial.print(" Temp: ");
+    Serial.println(tracker.getTemperature());
 
-    delay(300);
+    Serial.println("------------");
+    delay(3000);
 }

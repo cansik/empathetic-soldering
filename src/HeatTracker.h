@@ -14,8 +14,8 @@ private:
     float pixels[AMG88xx_PIXEL_ARRAY_SIZE];
 
     float temperature = 0;
-    float x = 0;
-    float y = 0;
+    float x = 0.0f;
+    float y = 0.0f;
 
 public:
     void setup();

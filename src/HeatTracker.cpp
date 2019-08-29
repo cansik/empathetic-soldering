@@ -17,22 +17,22 @@ void HeatTracker::update() {
     amg.readPixels(pixels);
 
     // find max temperature
-    temperature = -500.0f;
-    auto maxX = AMG88xx_PIXEL_ARRAY_SIZE / 2;
-    auto maxY = AMG88xx_PIXEL_ARRAY_SIZE / 2;
+    temperature = 0.0f;
+    auto maxX = AMG88xx_PIXEL_ARRAY_SIZE / 8;
+    auto maxY = AMG88xx_PIXEL_ARRAY_SIZE / 8;
 
     for (int i = 0; i < AMG88xx_PIXEL_ARRAY_SIZE; i++) {
-        if(temperature >= pixels[i])
-            return;
+        if (temperature >= pixels[i])
+            continue;
 
-        temperature = pixels[i];
-        maxX = (int)floor(i / 8.0);
+        maxX = floor(i / 8);
         maxY = (i % 8);
+        temperature = pixels[i];
     }
 
     // normalize values
     x = maxX / 8.0f;
-    y = maxX / 8.0f;
+    y = maxY / 8.0f;
 }
 
 float HeatTracker::getX() const {
