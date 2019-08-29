@@ -2,8 +2,8 @@
 // Created by Florian Bruggisser on 2019-08-29.
 //
 
+#include <sensor/HeatTracker.h>
 #include "Arduino.h"
-#include "HeatTracker.h"
 
 auto tracker = HeatTracker(true);
 

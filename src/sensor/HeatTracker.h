@@ -6,7 +6,7 @@
 #define EMPATHETIC_SOLDERING_HEATTRACKER_H
 
 #include <Adafruit_AMG88xx.h>
-#include <util/EasingValue.h>
+#include <sensor/EasingValue.h>
 
 class HeatTracker {
 
