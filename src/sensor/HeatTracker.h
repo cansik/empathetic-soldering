@@ -6,7 +6,8 @@
 #define EMPATHETIC_SOLDERING_HEATTRACKER_H
 
 #include <Adafruit_AMG88xx.h>
-#include <sensor/EasingValue.h>
+#include <util/EasingValue.h>
+#include <util/ExponentialMovingAverage.h>
 
 class HeatTracker {
 
@@ -23,6 +24,8 @@ private:
     EasingValue easingX = EasingValue(0.5f, 0.1f);
     EasingValue easingY = EasingValue(0.5f, 0.1f);
 
+    ExponentialMovingAverage averageTemperature = ExponentialMovingAverage(0.1f);
+
     void updateEasing();
 
 public:
@@ -37,6 +40,8 @@ public:
      * @return Max temperature.
      */
     float getTemperature() const;
+
+    float getAverageTemperature() const;
 
     /**
      * Normalized x value.

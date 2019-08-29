@@ -34,6 +34,9 @@ void HeatTracker::update() {
     x = maxX / 8.0f;
     y = maxY / 8.0f;
 
+    // update easing and average
+    averageTemperature.update(temperature);
+
     if(easingEnabled)
         updateEasing();
 }
@@ -76,4 +79,8 @@ void HeatTracker::setEasingEnabled(bool easingEnabled) {
 void HeatTracker::setEasing(float value) {
     easingX.setEasing(value);
     easingY.setEasing(value);
+}
+
+float HeatTracker::getAverageTemperature() const {
+    return averageTemperature.getAverage();
 }

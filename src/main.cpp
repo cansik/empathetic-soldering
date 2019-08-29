@@ -22,6 +22,8 @@ void loop() {
     Serial.print(" Y: ");
     Serial.print(tracker.getY());
     Serial.print(" Temp: ");
-    Serial.println(tracker.getTemperature());
+    Serial.print(tracker.getTemperature());
+    Serial.print(" AvTemp: ");
+    Serial.println(tracker.getAverageTemperature());
     delay(100);
 }
