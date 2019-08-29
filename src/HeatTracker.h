@@ -10,6 +10,10 @@
 class HeatTracker {
 
 private:
+    Adafruit_AMG88xx amg;
+    float pixels[AMG88xx_PIXEL_ARRAY_SIZE];
+
+    float temperature = 0;
     float x = 0;
     float y = 0;
 
@@ -17,6 +21,12 @@ public:
     void setup();
 
     void update();
+
+    /**
+     * Max temperature found.
+     * @return Max temperature.
+     */
+    float getTemperature() const;
 
     /**
      * Normalized x value.
@@ -29,7 +39,6 @@ public:
      * @return y value between 0.0 and 1.0
      */
     float getY() const;
-
 };
 
 
